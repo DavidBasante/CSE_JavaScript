@@ -42,9 +42,9 @@ document.getElementById("subtractNumbers").addEventListener('click', subtractNum
 multiply = (number1, number2) => number1 * number2;
 
 multiplyNumbers = () => {
-    let factor1 = (document.querySelector("#factor1").value);
-    let factor2 = (document.querySelector("#factor2").value);
-    document.getElementById("product").value = multiply(num5, num6);
+    let factor1 = Number(document.querySelector("#factor1").value);
+    let factor2 = Number(document.querySelector("#factor2").value);
+    document.getElementById("product").value = multiply(factor1, factor2);
 }
 document.getElementById("multiplyNumbers").addEventListener('click', multiplyNumbers);
 
@@ -57,8 +57,8 @@ function divide(number7, number8) {
 }
 
 function divideNumbers() {
-    let dividend = (document.querySelector("#dividend").value);
-    let divisor = (document.querySelector("#divisor").value);
+    let dividend = Number(document.querySelector("#dividend").value);
+    let divisor = Number(document.querySelector("#divisor").value);
     document.getElementById("quotient").value = divide(dividend, divisor);
 }
 document.getElementById("divideNumbers").addEventListener('click', divideNumbers);
