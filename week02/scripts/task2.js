@@ -4,19 +4,19 @@
 
 // Step 1: declare and instantiate a variable to hold your name
 
-let myName = "David";
+const myName = "David";
 
 // Step 2: place the value of the name variable into the HTML file (hint: document.querySelector())
-document.querySelector('#name').innerHTML = myName;
+document.querySelector('#name').textContent = myName;
 
 // Step 3: declare and instantiate a variable to hold the current year
-let currentYear = 2023;
+const currentYear = 2023;
 
 // Step 4: place the value of the current year variable into the HTML file
-document.querySelector('#year').innerHTML = currentYear;
+document.querySelector('#year').textContent = currentYear;
 
 // Step 5: declare and instantiate a variable to hold the name of your picture
-let myPic = 'images/myPicture.jpg';
+const myPic = 'images/myPicture.jpg';
 
 // Step 6: copy your image into the "images" folder
 
@@ -29,30 +29,26 @@ document.querySelector('#photo').setAttribute('src', myPic);
 /* ARRAYS */
 
 // Step 1: declare and instantiate an array variable to hold your favorite foods
-let favoriteFood = ["Churrasco", "Corn cake", "baked fish", "Scotch broth"];
-let foodList = favoriteFood.join(", ");
+const favoriteFood = ["Churrasco", "Corn cake", "baked fish", "Scotch broth"];
 
 // Step 2: place the values of the favorite foods variable into the HTML file
-document.querySelector('#food').innerHTML = foodList;
+document.querySelector('#food').textContent = favoriteFood.join(", ");
 
 // Step 3: declare and instantiate a variable to hold another favorite food
-let addFavoriteFood = "irish stew";
+const addFavoriteFood = "irish stew";
 
 // Step 4: add the variable holding another favorite food to the favorite food array
 favoriteFood.push(addFavoriteFood);
 
 // Step 5: repeat Step 2
-document.querySelector('#food').innerHTML = favoriteFood.join(", ");
 
 // Step 6: remove the first element in the favorite foods array
 favoriteFood.shift();
 
 // Step 7: repeat Step 2
-document.querySelector('#food').innerHTML = favoriteFood.join(", ");
-
 
 // Step 8: remove the last element in the favorite foods array
 favoriteFood.pop();
 
 // Step 7: repeat Step 2
-document.querySelector('#food').innerHTML = favoriteFood.join(", ");
+document.querySelector('#food').textContent = favoriteFood.join(", ");
