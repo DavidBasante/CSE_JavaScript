@@ -25,11 +25,11 @@ document.getElementById("addNumbers").addEventListener('click', addNumbers);
 
 // Step 6: Using function expressions, repeat Steps 1-5 with new functions named subtract and subtractNumbers and HTML form controls with IDs of minuend, subtrahend, difference and subtractNumbers
 
-function subtract(number1, number2){
+const add = function (number1, number2){
     return number1 - number2;
 }
 
-function subtractNumbers(){
+const subtractNumbers = function(){
     let minuend = Number(document.querySelector("#minuend").value);
     let subtrahend = Number(document.querySelector("#subtrahend").value);
     let difference = subtract(minuend, subtrahend);
