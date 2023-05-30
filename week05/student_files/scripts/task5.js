@@ -8,12 +8,9 @@ const currentDate = new Date();
 
 // Step 2: Declare another variable to hold the day of the week
 
-let weekDay;
+const weekDay = currentDate.getDate();
 
 // Step 3: Using the variable declared in Step 1, assign the value of the variable declared in Step 2 to the day of the week ( hint: getDay() )
-
-weekDay = currentDate.getDate();
-
 // Step 4: Declare a variable to hold a message that will be displayed
 
 let message;
@@ -36,7 +33,7 @@ let message2;
 
 // Step 2: Use switch, case and break to set the message variable to the day of the week as a string (e.g. Sunday, Monday, etc.) using the day of week variable declared in Step 2 above
 
-switch (day){
+switch (weekDay){
     case 0:
         message2 = 'Sunday';
         break;
@@ -84,32 +81,30 @@ let templeList = [];
 // - Appends the <article> element to the HTML element with an ID of temples
 
 function output(temples) {
-    let divContainer = document.getElementById("temples")
+    let divContainer = document.getElementById("temples");
 
     temples.forEach(temple => {
         let article = document.createElement("article");
 
-        let header3 = document.createElement("h3")
+        let header3 = document.createElement("h3");
         header3.innerHTML = temple.templeName;
 
-        let header4 = document.createElement("h4")
+        let header4 = document.createElement("h4");
         header4.innerHTML = temple.location;
 
-        let header42 = document.createElement("h4")
+        let header42 = document.createElement("h4");
         header42.innerHTML = temple.dedicated;
 
-        let templeImage = document.createElement("img")
-        templeImage.setAttribute("src", temple.imageUrl)
-        templeImage.setAttribute("alt", temple.templeName)
-
+        let templeImage = document.createElement("img");
+        templeImage.setAttribute("src", temple.imageUrl);
+        templeImage.setAttribute("alt", temple.templeName);
 
         article.appendChild(header3);
         article.appendChild(header4);
         article.appendChild(header42);
         article.appendChild(templeImage);
 
-        divContainer.appendChild(article)
-
+        divContainer.appendChild(article);
     });
 }
 
@@ -118,17 +113,22 @@ function output(temples) {
 // Step 5: Convert your fetch response into a Javascript object ( hint: .json() ). Store this in the templeList variable you declared earlier (Step 1). Make sure the the execution of the code waits here as well until it finishes.
 // Step 6: Finally, call the output function and pass it the list of temples. Execute your getTemples function to make sure it works correctly.
 
-async function getTemples(){
+
+async function getTemples() {
     const response = await fetch("https://byui-cse.github.io/cse121b-course/week05/temples.json");
-    data = await response.json();
-    output(data);
-};
+    const data = await response.json();
+    templeList = data;
+    output(templeList);
+}
 getTemples();
 
 // Step 7: Declare a function named reset that clears all of the <article> elements from the HTML element with an ID of temples
 
-function reset (){
-    document.getElementById('temples').innerHTML = '';
+function reset() {
+    const divContainer = document.getElementById('temples');
+    while (divContainer.firstChild) {
+        divContainer.removeChild(divContainer.firstChild);
+    }
 }
 
 // Step 8: Declare a function named sortBy that does the following:
@@ -136,12 +136,14 @@ function reset (){
 // - Sorts the global temple list by the currently selected value of the HTML element with an ID of sortBy
 // - Calls the output function passing in the sorted list of temples
 
-const sortByValue = document.getElementById('sortBy').value;
-  templeList.sort((a, b) => {
-    return a[sortByValue].localeCompare(b[sortByValue]);
-  });
-
-  output(templeList);
+function sortBy() {
+    reset();
+    const sortByValue = document.getElementById('sortBy').value;
+    templeList.sort((a, b) => {
+        return a[sortByValue].localeCompare(b[sortByValue]);
+    });
+    output(templeList);
+}
 // Step 9: Add a change event listener to the HTML element with an ID of sortBy that calls the sortBy function
 document.getElementById('sortBy').addEventListener('change', sortBy);
 /* STRETCH */
