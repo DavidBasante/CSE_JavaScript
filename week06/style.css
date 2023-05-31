@@ -1,0 +1,15 @@
+*{
+    box-sizing: border-box;
+}
+html, body{
+    text-align: center;
+}
+
+div#container{
+    width: 200px;
+    background-color: lightgray;
+    border-radius: 10px;
+    box-shadow: 5px 5px 3px black;
+    margin: 10% auto 10%;
+    padding: 5px;
+}
